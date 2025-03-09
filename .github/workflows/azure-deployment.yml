@@ -3,7 +3,7 @@ name: Azure Deployment
 on:
   push:
     branches:
-      - master
+      - main
 
 jobs:
   build-and-deploy:
@@ -19,7 +19,9 @@ jobs:
         python-version: '3.10'
 
     - name: Install unixODBC development package
-      run: sudo apt-get update && sudo apt-get install -y unixodbc-dev
+      run: |
+        sudo apt-get update
+        sudo apt-get install -y unixodbc-dev
 
     - name: Install Python dependencies
       run: pip install -r requirements.txt
