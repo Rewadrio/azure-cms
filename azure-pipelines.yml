@@ -1,0 +1,17 @@
+# Azure Pipelines YAML file for deploying a Python application
+
+trigger:
+- main
+
+pool:
+  vmImage: 'ubuntu-latest'
+
+steps:
+- script: sudo apt-get update && sudo apt-get install -y unixodbc-dev
+  displayName: 'Install unixODBC development package'
+
+- script: pip install -r requirements.txt
+  displayName: 'Install Python dependencies'
+
+- script: python application.py
+  displayName: 'Run Application'
